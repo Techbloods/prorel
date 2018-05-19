@@ -18,4 +18,17 @@ export default createStackNavigator({
   PropertiesProfile: { screen: PropertiesProfile },
   GalleryView: { screen: GalleryView },
   PropertyView: { screen: PropertyView },
-});
+},
+{
+  initialRouteName: 'Home',
+  navigationOptions: {
+    headerStyle: {
+      backgroundColor: '#f4511e',
+    }, 
+    headerTintColor: '#fff',
+    headerTitleStyle: {
+      fontWeight: 'bold',
+    },
+  },
+}
+);
