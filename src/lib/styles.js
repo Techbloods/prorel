@@ -129,4 +129,22 @@ export default {
     paddingRight: 7,
     textAlignVertical: 'center',
   },
+  modalContentWrapper: {
+    backgroundColor: 'white',
+    width: '84%',
+    height: '50.15%',
+    padding: '5%',
+    marginRight: 'auto',
+    marginLeft: 'auto',
+  },
+  modalcontainer: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+    top: 0,
+    bottom: 0,
+    backgroundColor: 'rgba(0,0,0,0.8)',
+    width: '100%',
+    height: '100%',
+  },
 };

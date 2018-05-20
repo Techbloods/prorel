@@ -13,14 +13,19 @@ const AppText = (props) => (
   </Text>
 )
 
+AppText.defaultProps = {
+  children: '',
+  style: '',
+}
+
 AppText.propTypes = {
   children: PropTypes.oneOfType([
     PropTypes.any,
-  ]).isRequired,
+  ]),
   style: PropTypes.oneOfType([
     PropTypes.object, PropTypes.string,
     PropTypes.any
-  ]).isRequired,
+  ]),
 };
 
 export default AppText;

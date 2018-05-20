@@ -32,7 +32,7 @@ class FilterBox extends Component {
     searchValue: '',
   }
 
-  componentDidMount() {
+  componentWillUnMount() {
     this.props.filterBy(this.state.filter);
     this.props.SearchText(this.state.searchValue);
   }
@@ -43,6 +43,7 @@ class FilterBox extends Component {
       <View style={styles.modalContentWrapper}>
         <Text>FILTER BY</Text>
         <View style={[styles.borderBox, { marginTop: '10%', marginBottom: '10%'}]}>
+
           <Picker
             selectedValue={this.state.filter}
             style={{ height: '100%',}}
@@ -53,6 +54,7 @@ class FilterBox extends Component {
               <Picker.Item label="Phone Number" value="Phone Number" />
               <Picker.Item label="Email" value="Email" />
           </Picker>
+          
         </View>
         <TextInput
             style={[styles.searchfield, styles.borderBox]}

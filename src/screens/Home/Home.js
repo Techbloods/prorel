@@ -10,6 +10,7 @@ import data from './seed';
 import styles from './styles'
 import FilterContainer from '../../lib/FilterContainer';
 import Filterbox from './Filterbox';
+import EmptyContent from '../../lib/EmptyContent';
 import { NAV_PROPERTIES } from '../../navigation/navigationScreens';
 
 const AppText = (props) => (
@@ -94,14 +95,19 @@ renderModal = () => (
           <AppText style={[styles.text, styles.headingText]}> Email</AppText>
         </View>
 
-        <FlatList
+        {this.state.data ?
+          <FlatList
           style={styles.flatList}
           keyExtractor={this.keyExtractor}
           showsVerticalScrollIndicator={false}
-          extradata={this.state}
-          data={this.state.data}
+          data={data}
           renderItem={this.renderedRow}
-        />
+          /> : 
+          <EmptyContent
+            textStyle={{ fontSize: 18, textAlignVertical: 'center', textAlign: 'center', color: 'grey', marginBottom: 30,  fontWeight: 'bold' }}
+            message="No Result Found"
+          />
+        }
        </FilterContainer>
     );
   }
