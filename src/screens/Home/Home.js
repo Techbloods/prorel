@@ -4,6 +4,8 @@ import { View,
   FlatList,
   TouchableOpacity,
   Modal,
+  Image,
+  StatusBar
 } from 'react-native';
 import PropTypes from 'prop-types';
 import data from './seed';
@@ -11,7 +13,9 @@ import styles from './styles'
 import FilterContainer from '../../lib/FilterContainer';
 import Filterbox from './Filterbox';
 import EmptyContent from '../../lib/EmptyContent';
-import { NAV_PROPERTIES } from '../../navigation/navigationScreens';
+import { NAV_PROPERTIES, NAV_HOME } from '../../navigation/navigationScreens';
+import menu from '../../../assets/menu.png';
+import { THEME, WHITE } from '../../lib/color';
 
 const AppText = (props) => (
   <Text
@@ -35,7 +39,7 @@ AppText.propTypes = {
 
 class Home extends Component {
   static navigationOptions = {
-    title: 'Home',
+    drawerLabel: 'Home',
   };
 
   state = {
@@ -57,7 +61,10 @@ class Home extends Component {
   keyExtractor = item => String(item.id);
 
   renderedRow = ({ item }) => (
-    <TouchableOpacity onPress={() => this.props.navigation.navigate(NAV_PROPERTIES)} >
+    <TouchableOpacity onPress={() => {
+      this.props.navigation.push({ screen: NAV_HOME, title: 'home'});
+      this.props.navigation.navigate(NAV_PROPERTIES)}
+     } >
       <View key={item.propertyId} style={styles.row}>
         <AppText style={[styles.text, styles.bottomBorder]}>{item.name}</AppText>
         <AppText style={[styles.text, styles.bottomBorder]}>{item.id}</AppText>
@@ -84,6 +91,24 @@ renderModal = () => (
 
   render() {
     return (
+      <View style={{ flex: 1, }}>
+      <StatusBar
+        backgroundColor={this.props.StatusBarColor || THEME }
+        barStyle="light-content"
+      />
+        <View style={{ flex: 0, flexDirection: 'row', alignItems:'center', justifyContent: 'space-between', height: 50, backgroundColor: THEME , width: '100%'}}>
+        <TouchableOpacity
+          onPress={() => this.props.navigation.toggleDrawer()}
+          style={{marginLeft: '3%'}}
+        > 
+          <Image
+            source={menu}
+            
+            style={{height: 24, width: 24, }} />
+        </TouchableOpacity>
+        <Text style={{ color: WHITE, fontSize: 16,}}> Title </Text>
+      </View>
+      <View style={{flexGrow: 1,}}>
       <FilterContainer
         onFilterPressed={() => this.setModalVisible(true)}
       >
@@ -109,13 +134,21 @@ renderModal = () => (
           />
         }
        </FilterContainer>
+       </View>
+       </View>
+
+       
     );
   }
 }
 
 Home.propTypes = {
+  StatusBar: PropTypes.oneOfType([
+    PropTypes.any,
+  ]),
   navigation: PropTypes.shape({
     navigate: PropTypes.any,
+    toggleDrawer: PropTypes.any,
   })
 }
 

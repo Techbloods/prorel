@@ -12,7 +12,7 @@ import PropertyPicker from '../Properties/PropertyPicker';
 import AppButton from '../../lib/AppButton';
 import AppText from '../../lib/AppText';
 import { resizeWidth } from '../../utils/resize';
-import { WHITE } from '../../lib/color';
+import { WHITE, THEME } from '../../lib/color';
 import searchIcon from '../../../assets/search.png'
 import { NAV_PROPERTY_VIEW } from '../../navigation/navigationScreens';
 
@@ -47,18 +47,21 @@ class ForRent extends Component {
       <View style={{flex: 0, height: '80%', width: '100%', }}>
 
       <View style={[styles.propertyRow,
-        {flex: 0, flexDirection: 'row', alignItems: 'center', width: '100%',
+        {flex: 0, flexDirection: 'row',height: 50,  backgroundColor: 'white', alignItems: 'center', width: '100%',
                justifyContent: 'space-evenly'}]}>
-          <AppButton  backgroundStyle={{ backgroundColor: '#7CBBFF', flex: 1, borderRadius: 0, width: resizeWidth(33)}}
+          <AppButton  backgroundStyle={{ backgroundColor: 'white', flex: 1, borderRadius: 0, width: resizeWidth(33)}}
+              textStyle={{ color: 'black' }}
               onPress={() => alert("yarn clicked rent")} title="FOR RENT" />
-          <AppButton  backgroundStyle={{ borderBottomWidth: 5, borderColor: 'white', backgroundColor: '#7CBBFF',
+          <AppButton  backgroundStyle={{ borderBottomWidth: 5, borderBottomColor: '#7CBBFF', backgroundColor: '#fff',
           flex: 1, borderRadius: 0, width: resizeWidth(33)}}
+          textStyle={{ color: 'black' }}
               onPress={() => alert("yarn clicked me")} title="FOR SALE" />
-          <AppButton  backgroundStyle={{ backgroundColor: '#7CBBFF', flex: 1,  borderRadius: 0,width: resizeWidth(33) }}
+          <AppButton  backgroundStyle={{ backgroundColor: '#fff', flex: 1,  borderRadius: 0,width: resizeWidth(33) }}
+              textStyle={{ color: 'black' }}
               onPress={() => alert("yarn clicked me")} title="SHORT LET" />
       </View>
 
-      <View style={[styles.modalContentWrapper, {flex: 1, height: '85%', width: '100%', backgroundColor: '#001e80',}]}>
+      <View style={[styles.modalContentWrapper, {flex: 1, height: '85%', width: '100%', backgroundColor: THEME,}]}>
       
       
       <View style={[ styles.propertyRow, styles.borderBox, 
@@ -80,7 +83,7 @@ class ForRent extends Component {
           <PropertyPicker
             pickerStyle={{backgroundColor: 'rgba(255,255,255,0.2)',borderWidth: 0, }}
             pickerTextStyle={{color: WHITE }}
-            pickerComponenentStyle={{ color: WHITE }}
+            
             componentStyle={ propertyStyle.rowItem }
             title="State"
             dataset={data}
@@ -90,7 +93,6 @@ class ForRent extends Component {
           <PropertyPicker
             pickerStyle={{backgroundColor: 'rgba(255,255,255,0.2)',borderWidth: 0, }}
             pickerTextStyle={{color: WHITE }}
-            pickerComponenentStyle={{ color: WHITE }}
             componentStyle={ propertyStyle.rowItem }
             title="Locality" dataset={data}
             selectedValue={this.state.locality}
@@ -99,7 +101,7 @@ class ForRent extends Component {
 
         <View style={[propertyStyle.propertyRow, propertyStyle.propertyItemSmall]}>
           <InputTextRenderer
-            textStyle={{color: 'white', fontSize: 18 }}
+            textStyle={{color: 'white', fontSize: 14 }}
             textInputStyle={{backgroundColor: 'rgba(255,255,255,0.2)', color: WHITE , fontSize: 14,
                borderWidth: 0, textAlign: 'left', paddingLeft: 10}}
             componentStyle={ [propertyStyle.rowItem, { }]}
@@ -110,7 +112,7 @@ class ForRent extends Component {
             dataset={data} onChangeText={(beds) => this.setState({  beds })} />
 
           <InputTextRenderer 
-            textStyle={{color: 'white', fontSize: 18 }}
+            textStyle={{color: 'white', fontSize: 14 }}
             textInputStyle={{backgroundColor: 'rgba(255,255,255,0.2)', color: WHITE , fontSize: 14,
                borderWidth: 0, textAlign: 'left', paddingLeft: 10}}
             componentStyle={ [propertyStyle.rowItem, { }]}
@@ -126,7 +128,7 @@ class ForRent extends Component {
             title="Type"
             pickerStyle={{backgroundColor: 'rgba(255,255,255,0.2)',borderWidth: 0, }}
             pickerTextStyle={{color: WHITE }}
-            pickerComponenentStyle={{ color: WHITE }}
+            
             componentStyle={ propertyStyle.rowItem }
             dataset={data}
             selectedValue={this.state.type}
@@ -136,7 +138,7 @@ class ForRent extends Component {
             title="Requested By"
             pickerStyle={{backgroundColor: 'rgba(255,255,255,0.2)',borderWidth: 0, }}
             pickerTextStyle={{color: WHITE }}
-            pickerComponenentStyle={{ color: WHITE }}
+            
             componentStyle={ propertyStyle.rowItem }
             dataset={data}
             selectedValue={this.state.requestedBy}

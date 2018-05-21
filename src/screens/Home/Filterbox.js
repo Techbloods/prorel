@@ -4,19 +4,19 @@ import { View,
   TextInput,
   Picker,
   Text,
-  TouchableNativeFeedback
+  TouchableOpacity
 } from 'react-native'; 
 import styles from './styles';
 
 
 const AppButton = ({ onClick, children }) => (
-  <TouchableNativeFeedback
+  <TouchableOpacity
       onPress={onClick}
     >
       <View style={styles.buttonStyle}>
         <Text style={styles.buttonStyleText}>{children}</Text>
       </View>
-    </TouchableNativeFeedback>
+    </TouchableOpacity>
 );
 
 AppButton.propTypes = {
@@ -46,8 +46,8 @@ class FilterBox extends Component {
 
           <Picker
             selectedValue={this.state.filter}
-            style={{ height: '100%',}}
-            itemStyle={{ padding: 10, borderBottomColor: 'steelblue', margin: 2, borderWidth: 2, borderColor: 'steelblue' }}
+            style={{alignItems: 'center'}}
+            itemStyle={{ padding: 10, margin: 2, borderWidth: 2, borderColor: 'steelblue' }}
             onValueChange={(filter) => this.setState({ filter })}>
               <Picker.Item label="Client" value="Client Id" />
               <Picker.Item label="Property Id" value="Property Id" />

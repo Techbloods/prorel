@@ -2,6 +2,7 @@ import React from 'react';
 import { TouchableOpacity, View} from 'react-native';
 import PropTypes from 'prop-types';
 import AppText from './AppText';
+import { THEME } from './color';
 
 const styles = {
   buttonStyle: {
@@ -9,7 +10,7 @@ const styles = {
     alignItems: 'center',
     justifyContent: 'center',
     borderRadius: 5,
-    backgroundColor: 'purple',
+    backgroundColor: THEME,
     marginTop: 'auto',
     marginBottom: 'auto',
     height: 40,

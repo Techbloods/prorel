@@ -1,20 +1,2 @@
-export const ASH_BACKGROUND = '#F6F5F5';
-export const THEME_COLOR = '#02CEBD';
-export const WHITE = '#FFFFFF';
-export const HEADER_TEXT_COLOR = '#282828';
-export const INPUT_TEXT_BOX_BACKGROUND = '#F0F0F0';
-export const LIGHT_TEXT = '#5C5C5C';
-export const TEXT_BOX_BORDER = '#252525';
-export const INPUT_UNDERLINE = '#E1E1E1';
-export const RADIO_BORDER = '#CCCCCC';
-export const PITCH_BLACK = '#000000';
-export const EXTENDED_INPUT_TEXT_BORDER_COLOR = '#AAAAAA';
-export const DESELECTED_BUTTON = '#252525';
-export const SELECTED_BUTTON = '#EBEBEB';
-export const SELECTABLE_LIST_ITEM_BORDER = '#F0EFEF';
-export const BUTTON_BORDER = '#464646';
-export const FOOTER_BG = '#E8E8E8';
-export const FOOTER_TEXT = '#666666';
-export const STATUS_BAR = '#d6d6d6';
-export const CHAT_BOX_BORDER = '#DFDFDF';
-
+export const THEME = '#0B1C67';
+export const WHITE = '#fff';

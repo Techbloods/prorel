@@ -1,4 +1,41 @@
+import { THEME } from "./color";
+
+const React = require("react-native");
+const { Platform, Dimensions } = React;
+
+const deviceHeight = Dimensions.get("window").height;
+const deviceWidth = Dimensions.get("window").width;
+
+
 export default {
+
+  drawerCover: {
+    alignSelf: "stretch",
+    height: deviceHeight / 3.5,
+    width: null,
+    position: "relative",
+    marginBottom: 10
+  },
+  drawerImage: {
+    position: "absolute",
+    left: Platform.OS === "android" ? deviceWidth / 10 : deviceWidth / 9,
+    top: Platform.OS === "android" ? deviceHeight / 13 : deviceHeight / 12,
+    width: 210,
+    height: 75,
+    resizeMode: "cover"
+  },
+  textNB: {
+    fontWeight: Platform.OS === "ios" ? "500" : "400",
+    fontSize: 16,
+    marginLeft: 20
+  },
+  badgeText: {
+    fontSize: Platform.OS === "ios" ? 13 : 11,
+    fontWeight: "400",
+    textAlign: "center",
+    marginTop: Platform.OS === "android" ? -3 : undefined
+  },
+
   container: {
     position: 'relative',
     flex: 1,
@@ -18,8 +55,8 @@ export default {
   },
   shadow: {
     shadowOpacity: 1,
-    shadowRadius: 200,
-    shadowColor: 'red',
+    shadowRadius: 100,
+    shadowColor: '#F7F7F7',
     elevation: 10,
   },
   column: {
@@ -73,7 +110,7 @@ export default {
   filterByText: {
     fontWeight: 'bold',
     fontSize: 16,
-    color: 'black',
+    color: '#F9D36D',
   },
   clientLead: {
     flex: 0,
@@ -117,7 +154,7 @@ export default {
     alignItems: 'center',
     justifyContent: 'center',
     borderRadius: 5,
-    backgroundColor: 'steelblue',
+    backgroundColor: THEME,
     height: 40,
   },
   buttonStyleText: {

@@ -20,7 +20,7 @@ class FilterContainer extends Component {
       <View style={styles.container}>
         <View style={styles.dataView}>
 
-        <Text style={styles.clientLead}>{props.title}</Text>
+        <Text style={styles.clientLead}>{this.props.title}</Text>
         
         <TouchableOpacity style={styles.filterBy} onPress={this.props.onFilterPressed} >
 
@@ -52,6 +52,7 @@ class FilterContainer extends Component {
 
 FilterContainer.defaultProps = {
   title: 'Client Leads',
+  onFilterPressed: () => {},
 }
 
 FilterContainer.propTypes = {
@@ -59,7 +60,7 @@ FilterContainer.propTypes = {
     PropTypes.any,
   ]).isRequired,
   title: PropTypes.string,
-  onFilterPressed: PropTypes.func.isRequired,
+  onFilterPressed: PropTypes.func,
 
 }
 

@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { View, TextInput, Text, ScrollView} from 'react-native'; 
+import { View, TextInput, Text, TouchableOpacity, DatePickerAndroid} from 'react-native'; 
 import data from '../Home/seed';
 import styles from '../Home/styles';
-import { propertyStyle } from './styles';
+import { propertyStyle } from '../Properties/styles';
 import AppText from '../../lib/AppText';
-import PropertyPicker from './PropertyPicker';
+import PropertyPicker from '../Properties/PropertyPicker';
 import AppButton from '../../lib/AppButton';
 
 export const InputTextRenderer = (props) => (
@@ -22,17 +22,14 @@ export const InputTextRenderer = (props) => (
   </View>
 );
 
-class PropertiesFilterbox extends Component {
+class PropertyViewFilter extends Component {
   state = { 
       searchValue: '',
       selectedState: '',
       locality: '',
       beds: '',
-      bugdet: '',
-      types: '',
-      requestedBy: '',
-      from: '',
-      to: '',
+      fromDate: null,
+      toDate: null,
   }
 
   componentWillUnMount() {
@@ -41,25 +38,40 @@ class PropertiesFilterbox extends Component {
       selectedState: this.state.selectedState,
       locality: this.state.locality,
       beds: this.state.beds,
-      bugdet: this.state.bugdet,
-      types: this.state.types,
-      requestedBy: this.state.requestedBy,
-      from: this.state.from,
-      to: this.state.to,
+      fromDate: this.state.fromDate,
+      toDate: this.state.toDate,
   }
     this.props.filterSelection(data);
+  }
+
+  pickDate = async (option) => {
+    try {
+      const {action, year, month, day} = await DatePickerAndroid.open({
+        date: new Date(2020, 4, 25)
+      });
+      if (action !== DatePickerAndroid.dismissedAction) {
+        if(option === 'from'){
+          this.setState({ fromDate: `${day}/${month+1}/${year}`})
+        }else{
+          this.setState({ toDate: `${day}/${month+1}/${year}`})
+        }
+      }
+    } catch ({code, message}) {
+      console.warn('Cannot open date picker', message);
+    }
   }
 
   render() {
     return (
         <View style={styles.modalcontainer}>
         
-          <View style={[styles.modalContentWrapper, { backgroundColor: 'rgba(0,0,0,0.1)', width: '100%', height: '100%', flexGrow: 1, alignItems: 'center', justifyContent: 'center' ,}]}>
-          <ScrollView style={[styles.modalContentWrapper, {width: '100%'}]}>
-          <Text style={{ alignSelf: 'flex-start' }}>FILTER BY</Text>
+        <View style={[styles.modalContentWrapper, { backgroundColor: 'white', 
+          width: '90%', height: '60%', alignItems: 'flex-start', justifyContent: 'space-between' ,}]}>
+          
+          <Text style={{ marginTop: '4%', }}>FILTER BY</Text>
 
           <TextInput
-            style={[styles.searchfield, styles.borderBox, { width: '100%', marginTop: '5%', marginBottom: '5%',}]}
+            style={[styles.searchfield, styles.borderBox, { width: '100%',}]}
             value={this.state.inputText}
             placeholder="Enter your search here"
             onChangeText={searchValue => this.setState({ searchValue })}
@@ -82,58 +94,26 @@ class PropertiesFilterbox extends Component {
             </View>
 
             <View style={propertyStyle.propertyRow}>
-              <InputTextRenderer
-                componentStyle={ propertyStyle.rowItem }
-                keyboardType="numeric"
-                title="Beds"
-                placeholder="Beds"
-                dataset={data} onChangeText={(beds) => this.setState({  beds })} />
+            <TouchableOpacity
+              style={[propertyStyle.rowItem]}
+              onPress={() => this.pickDate('from')} >
+               <Text style={[{ borderBottomWidth: 1, width: '100%', color: 'grey', borderBottomColor: 'black', height: 50, fontSize: 16, padding: 0,textAlign: 'left'
+                , textAlignVertical: 'bottom' }]} >{this.state.fromDate || 'From Date' }</Text>
+            </TouchableOpacity>
 
-              <InputTextRenderer 
-                componentStyle={ propertyStyle.rowItem }
-                keyboardType="numeric"
-                title="Maximum Budget"
-                placeholder="Maximum Budget"
-                dataset={data} onChangeText={(budget) => this.setState({ budget })} />
-            </View>
+            <TouchableOpacity
+              style={[propertyStyle.rowItem]}
+              onPress={() => this.pickDate('to')} >
+               <Text style={[{ borderBottomWidth: 1, width: '100%', color: 'grey', borderBottomColor: 'black', height: 50, fontSize: 16, padding: 0,textAlign: 'left'
+                , textAlignVertical: 'bottom' }]} >{this.state.toDate || 'To Date' }</Text>
+            </TouchableOpacity>
 
-            <View style={propertyStyle.propertyRow}>
-              <PropertyPicker 
-                title="Type"
-                componentStyle={ propertyStyle.rowItem }
-                dataset={data}
-                selectedValue={this.state.type}
-                onValueChange={(type) => this.setState({  type })} />
-
-              <PropertyPicker 
-                title="Requested By"
-                componentStyle={propertyStyle.rowItem }
-                dataset={data}
-                selectedValue={this.state.requestedBy}
-                onValueChange={(requestedBy) => this.setState({ requestedBy })} />
-            </View>
-
-            <View style={propertyStyle.propertyRow}>
-              <PropertyPicker 
-                title="Type"
-                componentStyle={ propertyStyle.rowItem }
-                dataset={data}
-                selectedValue={this.state.type}
-                onValueChange={(type) => this.setState({  type })} />
-
-              <PropertyPicker 
-                title="Requested By"
-                componentStyle={propertyStyle.rowItem }
-                dataset={data}
-                selectedValue={this.state.requestedBy}
-                onValueChange={(requestedBy) => this.setState({ requestedBy })} />
             </View>
 
             <View style={[propertyStyle.propertyRow, { alignItems: 'flex-end', justifyContent: 'flex-end', marginBottom: '2%',}]}>
               <AppButton backgroundStyle={{ width: 70 , marginRight: 5}} onPress={this.props.onAccept} title="Ok" />
               <AppButton  backgroundStyle={{ width: 70 }}onPress={this.props.onCancel} title="cancel" />
             </View>
-            </ScrollView>
           </View>
 
         </View>
@@ -141,7 +121,7 @@ class PropertiesFilterbox extends Component {
   }
 }
 
-PropertiesFilterbox.propTypes = {
+PropertyViewFilter.propTypes = {
   onCancel: PropTypes.func.isRequired,
   onAccept: PropTypes.func.isRequired,
   filterSelection: PropTypes.func.isRequired,
@@ -173,4 +153,4 @@ InputTextRenderer.propTypes = {
 };
 
 
-export default PropertiesFilterbox;
+export default PropertyViewFilter;

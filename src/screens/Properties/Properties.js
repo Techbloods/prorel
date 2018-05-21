@@ -10,7 +10,7 @@ import PropertiesFilterbox from './PropertiesFilterbox';
 import { propertyStyle } from './styles';
 import AppButton from '../../lib/AppButton';
 import { resizeWidth } from '../../utils/resize';
-import { NAV_PROPERTY_SEARCH } from '../../navigation/navigationScreens';
+import { NAV_PROPERTY_SEARCH, NAV_PROPERTIES } from '../../navigation/navigationScreens';
 
 const PersonContact = (props) => (
 
@@ -101,6 +101,8 @@ renderModal = () => (
         name={this.state.selectedPerson.name}
         onPressMessage={() => {
           this.setState({ modalVisible: false});
+          this.props.navigation.push({ screen: NAV_PROPERTIES, title: 'home'});
+          
           this.props.navigation.navigate(NAV_PROPERTY_SEARCH);
         }}
         onPressCall = {() => this.setState({ modalVisible: false})}
