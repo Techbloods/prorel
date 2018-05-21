@@ -1,5 +1,4 @@
-import React from 'react-native'
-import { createStackNavigator, createDrawerNavigator } from 'react-navigation';
+import { createStackNavigator } from 'react-navigation';
 import Home from '../screens/Home/Home';
 import PropertyView from '../screens/PropertyView/PropertyView';
 import ClientLead from '../screens/ClientLead/ClientLead';
@@ -11,8 +10,7 @@ import Properties from '../screens/Properties/Properties';
 import PostProperty from '../screens/PostProperty/PostProperty';
 import { THEME } from '../lib/color';
 
-export default createDrawerNavigator({
-  // PostProperty: { screen: PostProperty },
+export default createStackNavigator({
   Home: { screen: Home },
   ClientLead: { screen: ClientLead },
   ClientRequest: { screen: ClientRequest },
@@ -21,11 +19,13 @@ export default createDrawerNavigator({
   PropertiesProfile: { screen: PropertiesProfile },
   GalleryView: { screen: GalleryView },
   PropertyView: { screen: PropertyView },
+  // PostProperty: { screen: PostProperty },
 },
 {
-  drawerWidth: 300,
+  
   initialRouteName: 'Home',
   navigationOptions: {
+    headerMode: 'screen',
     headerStyle: {
       backgroundColor: THEME,
     }, 

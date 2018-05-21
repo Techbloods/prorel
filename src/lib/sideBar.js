@@ -14,168 +14,82 @@ import {
 import styles from "./styles";
 import drawerCover from "../../assets/drawer-cover.png";
 import drawerImage from "../../assets/logo-kitchen-sink.png";
-
+import { NAV_HOME } from "../navigation/navigationScreens";
 
 const datas = [
   {
-    name: "Anatomy",
-    route: "Anatomy",
-    icon: "phone-portrait",
+    name: "HOME",
+    route: NAV_HOME,
+    icon: "home",
+    bg: "#AB6AED",
+  },
+  {
+    name: "MY BOOKMARK",
+    route: "bookmark",
+    icon: "bookmark",
     bg: "#C5F442"
   },
   {
-    name: "Actionsheet",
+    name: "MY REQUEST",
     route: "Actionsheet",
     icon: "easel",
     bg: "#C5F442"
   },
   {
-    name: "Header",
+    name: "SUBMIT PROPERTY",
     route: "Header",
     icon: "phone-portrait",
     bg: "#477EEA",
-    types: "10"
   },
   {
-    name: "Footer",
+    name: "MY LEADS",
     route: "Footer",
     icon: "phone-portrait",
     bg: "#DA4437",
-    types: "4"
   },
   {
-    name: "Badge",
+    name: "MY PROPERTIES",
     route: "NHBadge",
     icon: "notifications",
     bg: "#4DCAE0"
   },
   {
-    name: "Button",
+    name: "BOOK APPOINTMENT",
     route: "NHButton",
-    icon: "radio-button-off",
+    icon: "book",
     bg: "#1EBC7C",
-    types: "9"
   },
   {
-    name: "Card",
+    name: "PRIVACY POLICY",
     route: "NHCard",
     icon: "keypad",
     bg: "#B89EF5",
-    types: "8"
   },
   {
-    name: "Check Box",
-    route: "NHCheckbox",
-    icon: "checkmark-circle",
+    name: "SUPPORT",
+    route: "support",
+    icon: "support",
     bg: "#EB6B23"
   },
   {
-    name: "Deck Swiper",
+    name: "CONTACT US",
     route: "NHDeckSwiper",
-    icon: "swap",
+    icon: "call",
     bg: "#3591FA",
-    types: "2"
   },
   {
-    name: "Fab",
+    name: "SETTINGS",
     route: "NHFab",
-    icon: "help-buoy",
+    icon: "settings",
     bg: "#EF6092",
-    types: "2"
   },
   {
-    name: "Form & Inputs",
-    route: "NHForm",
+    name: "LOG OUT",
+    route: "log-out",
     icon: "call",
     bg: "#EFB406",
-    types: "12"
   },
-  {
-    name: "Icon",
-    route: "NHIcon",
-    icon: "information-circle",
-    bg: "#bfe9ea",
-    types: "4"
-  },
-  {
-    name: "Layout",
-    route: "NHLayout",
-    icon: "grid",
-    bg: "#9F897C",
-    types: "5"
-  },
-  {
-    name: "List",
-    route: "NHList",
-    icon: "lock",
-    bg: "#5DCEE2",
-    types: "8"
-  },
-  {
-    name: "ListSwipe",
-    route: "ListSwipe",
-    icon: "swap",
-    bg: "#C5F442",
-    types: "3"
-  },
-  {
-    name: "Picker",
-    route: "NHPicker",
-    icon: "arrow-dropdown",
-    bg: "#F50C75"
-  },
-  {
-    name: "Radio",
-    route: "NHRadio",
-    icon: "radio-button-on",
-    bg: "#6FEA90"
-  },
-  {
-    name: "SearchBar",
-    route: "NHSearchbar",
-    icon: "search",
-    bg: "#29783B"
-  },
-  {
-    name: "Segment",
-    route: "Segment",
-    icon: "menu",
-    bg: "#0A2C6B",
-    types: "2"
-  },
-  {
-    name: "Spinner",
-    route: "NHSpinner",
-    icon: "navigate",
-    bg: "#BE6F50"
-  },
-  {
-    name: "Tabs",
-    route: "NHTab",
-    icon: "home",
-    bg: "#AB6AED",
-    types: "3"
-  },
-  {
-    name: "Thumbnail",
-    route: "NHThumbnail",
-    icon: "image",
-    bg: "#cc0000",
-    types: "2"
-  },
-  {
-    name: "Toast",
-    route: "NHToast",
-    icon: "albums",
-    bg: "#C5F442",
-    types: "6"
-  },
-  {
-    name: "Typography",
-    route: "NHTypography",
-    icon: "paper",
-    bg: "#48525D"
-  }
+  
 ];
 
 class SideBar extends Component {
@@ -192,7 +106,7 @@ class SideBar extends Component {
       <Container>
         <Content
           bounces={false}
-          style={{ flex: 1, backgroundColor: "#000000", top: -1 }}
+          style={{ flex: 1, backgroundColor: "#fff", top: -1 }}
         >
           <Image source={drawerCover} style={styles.drawerCover} />
           <Image square style={styles.drawerImage} source={drawerImage} />
