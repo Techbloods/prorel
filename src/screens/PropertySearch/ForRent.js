@@ -5,33 +5,16 @@ import {
   Image
 } from 'react-native';
 import styles from '../../lib/styles';
-import PropTypes from 'prop-types';
 import { propertyStyle } from '../Properties/styles';
+import PropTypes from 'prop-types';
 import data from '../Home/seed';
 import PropertyPicker from '../Properties/PropertyPicker';
 import AppButton from '../../lib/AppButton';
-import AppText from '../../lib/AppText';
 import { resizeWidth } from '../../utils/resize';
 import { WHITE, THEME } from '../../lib/color';
 import searchIcon from '../../../assets/search.png'
 import { NAV_PROPERTY_VIEW } from '../../navigation/navigationScreens';
-
-export const InputTextRenderer = (props) => (
-  <View style={props.componentStyle}>
-    <AppText style={[props.textStyle, {marginBottom: 4}]}> {props.title}</AppText>
-    <TextInput
-      style={[styles.searchfield, styles.borderBox, {fontSize: 16, textAlignVertical: 'center', textAlign: 'center'}, props.textInputStyle]}
-      value={props.inputTextValue}
-      keyboardType={props.keyboardType}
-      placeholder={props.placeholder}
-      placeholderTextColor={props.placeholderTextColor}
-      onChangeText={input => props.onChangeText( input )}
-      underlineColorAndroid="transparent"
-    />
-  </View>
-);
-
-
+import InputTextRenderer from '../../lib/InputTextRenderer';
 
 class ForRent extends Component {
   state = {
@@ -155,39 +138,6 @@ class ForRent extends Component {
     );
   }
 }
-
-InputTextRenderer.default = {
-  keyboardType: 'all',
-  onChangeText: () => {},
-  textStyle: {},
-  inputTextValue: '',
-  title: '',
-  placeholder: '',
-  textInputStyle: {},
-  placeholderTextColor: "black",
-}
-
-InputTextRenderer.propTypes = {
-  keyboardType: PropTypes.oneOfType([
-    PropTypes.any,
-  ]),
-  onChangeText: PropTypes.func.isRequired,
-  componentStyle: PropTypes.oneOfType([
-    PropTypes.any,
-  ]),
-  textStyle: PropTypes.oneOfType([
-    PropTypes.any,
-  ]),
-  inputTextValue: PropTypes.string,
-  placeholder: PropTypes.string,
-  title: PropTypes.string,
-  textInputStyle: PropTypes.oneOfType([
-    PropTypes.any,
-  ]),
-  placeholderTextColor: PropTypes.oneOfType([
-    PropTypes.any,
-  ]),
-};
 
 ForRent.propTypes = {
   navigation: PropTypes.shape({

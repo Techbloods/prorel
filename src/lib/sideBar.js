@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Image } from "react-native";
+import { Image } from 'react-native';
 import {
   Content,
   Text,
@@ -9,15 +9,27 @@ import {
   Container,
   Left,
   Right,
-  Badge
+  Badge,
 } from "native-base";
 import styles from "./styles";
 import drawerCover from "../../assets/drawer-cover.png";
 import drawerImage from "../../assets/logo-kitchen-sink.png";
-import { NAV_HOME } from "../navigation/navigationScreens";
+import { 
+  NAV_HOME,
+  NAV_MY_LEADS,
+  NAV_AGENT_PROFILE_SETTINGS,
+  NAV_SIGN_UP,
+  NAV_BOOK_MARKS,
+  NAV_CLIENT_REQUEST,
+  NAV_SUBMIT_PROPERTY,
+  NAV_PROPERTY_VIEW,
+  NAV_Book_AppointMent,
+  NAV_SUPPORT,
+  NAV_CONTACT_US,
+} from "../navigation/navigationScreens";
 
 const datas = [
-  {
+   {
     name: "HOME",
     route: NAV_HOME,
     icon: "home",
@@ -25,37 +37,37 @@ const datas = [
   },
   {
     name: "MY BOOKMARK",
-    route: "bookmark",
+    route: NAV_BOOK_MARKS,
     icon: "bookmark",
     bg: "#C5F442"
   },
   {
     name: "MY REQUEST",
-    route: "Actionsheet",
+    route: NAV_CLIENT_REQUEST,
     icon: "easel",
     bg: "#C5F442"
   },
-  {
-    name: "SUBMIT PROPERTY",
-    route: "Header",
-    icon: "phone-portrait",
-    bg: "#477EEA",
-  },
-  {
-    name: "MY LEADS",
-    route: "Footer",
-    icon: "phone-portrait",
-    bg: "#DA4437",
-  },
-  {
-    name: "MY PROPERTIES",
-    route: "NHBadge",
-    icon: "notifications",
-    bg: "#4DCAE0"
-  },
+  // {
+  //   name: "SUBMIT PROPERTY",
+  //   route: NAV_SUBMIT_PROPERTY,
+  //   icon: "phone-portrait",
+  //   bg: "#477EEA",
+  // },
+  // {
+  //   name: "MY LEADS",
+  //   route: NAV_MY_LEADS,
+  //   icon: "phone-portrait",
+  //   bg: "#DA4437",
+  // },
+  // {
+  //   name: "MY PROPERTIES",
+  //   route: NAV_PROPERTY_VIEW,
+  //   icon: "notifications",
+  //   bg: "#4DCAE0"
+  // },
   {
     name: "BOOK APPOINTMENT",
-    route: "NHButton",
+    route: NAV_Book_AppointMent,
     icon: "book",
     bg: "#1EBC7C",
   },
@@ -67,25 +79,25 @@ const datas = [
   },
   {
     name: "SUPPORT",
-    route: "support",
-    icon: "support",
+    route: NAV_SUPPORT,
+    icon: "call",
     bg: "#EB6B23"
   },
   {
     name: "CONTACT US",
-    route: "NHDeckSwiper",
+    route: NAV_CONTACT_US,
     icon: "call",
     bg: "#3591FA",
   },
   {
     name: "SETTINGS",
-    route: "NHFab",
+    route: NAV_AGENT_PROFILE_SETTINGS,
     icon: "settings",
     bg: "#EF6092",
   },
   {
     name: "LOG OUT",
-    route: "log-out",
+    route: NAV_SIGN_UP,
     icon: "call",
     bg: "#EFB406",
   },
@@ -129,7 +141,7 @@ class SideBar extends Component {
                     {data.name}
                   </Text>
                 </Left>
-                {data.types &&
+                   {data.types &&
                   <Right style={{ flex: 1 }}>
                     <Badge
                       style={{

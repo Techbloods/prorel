@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
-import { Drawer } from 'native-base';
+import { View } from 'react-native';
 import PropTypes from 'prop-types';
 import SideBar from './sideBar';
 import EmptyContent from './EmptyContent';
 import {
-  Content,
+  // Content,
   Text,
   Icon,
   Container,
@@ -13,7 +13,9 @@ import {
   Body,
   Left,
   Right,
+  Drawer
 } from "native-base";
+import { WHITE } from './color';
 
 class DrawerWrapper extends Component {
 
@@ -42,7 +44,7 @@ class DrawerWrapper extends Component {
        </Button>
        </Left>
        <Body>
-         <Text>{this.props.headerTitle}</Text>
+         <Text style={{ flexGrow: 1, color: 'white', fontWeight: 'bold', fontSize: 16, paddingLeft: 0, marginLeft: 0, textAlign: 'left', textAlignVertical: 'center', }}>{this.props.title}</Text>
        </Body>
        <Right>
          <Button 
@@ -52,9 +54,9 @@ class DrawerWrapper extends Component {
          </Button>
        </Right>
      </Header>
-     <Content>
+     <View style={[{flex: 1, backgroundColor: WHITE}, this.props.style]}>
      {this.props.children || <EmptyContent message= "This is empty" />}
-       </Content>
+       </View>
         </Container>
       
       </Drawer>
@@ -66,16 +68,20 @@ DrawerWrapper.propTypes = {
   navigation: PropTypes.oneOfType([
     PropTypes.any, 
   ]),
+  style:  PropTypes.oneOfType([
+    PropTypes.any, 
+  ]),
   children: PropTypes.oneOfType([
     PropTypes.any, PropTypes.element,
   ]).isRequired,
-  headerTitle: PropTypes.oneOfType([
+  title: PropTypes.oneOfType([
     PropTypes.any, 
   ]),
 }
 
 DrawerWrapper.defaultProps = {
-  headerTitle: '',
+  title: '',
+  style: [],
 }
 
 

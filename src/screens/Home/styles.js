@@ -91,7 +91,7 @@ export default {
   borderBox: {
     height: 50,
     borderRadius: 5,
-    borderWidth: 1,
+    borderWidth: 0.8,
     paddingLeft:5,
     paddingRight: 5,
     borderColor: 'grey',

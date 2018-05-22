@@ -1,27 +1,24 @@
 import React from 'react';
-import { TouchableOpacity, View} from 'react-native';
+import { TouchableOpacity, View, Image} from 'react-native';
 import PropTypes from 'prop-types';
 import AppText from './AppText';
-import { THEME } from './color';
+import { THEME, WHITE } from './color';
+import { sizeFromPercent } from '../utils/resize';
 
 const styles = {
   buttonStyle: {
     flex:0,
     alignItems: 'center',
+    flexDirection: 'row',
     justifyContent: 'center',
-    borderRadius: 5,
+    borderRadius: sizeFromPercent(1.5),
     backgroundColor: THEME,
-    marginTop: 'auto',
-    marginBottom: 'auto',
-    height: 40,
+    height: 50,
   },
   buttonStyleText: {
-    fontWeight: 'bold',
     color: '#fff',
-    fontSize: 14,
+    fontSize: sizeFromPercent(2.2),
     textAlign: 'center',
-    paddingLeft: 7,
-    paddingRight: 7,
     textAlignVertical: 'center',
   },
 }
@@ -29,6 +26,9 @@ const styles = {
 const AppButton = (props) => (
   <TouchableOpacity  onPress={props.onPress} >
     <View style={[styles.buttonStyle, props.backgroundStyle]}>
+     {props.useIcon &&  
+     <Image source={props.icon} style={[{height: 24, width: 24, marginRight: '5%', tintColor: WHITE}, props.iconStyle]} />
+     }
       <AppText style={[styles.buttonStyleText, props.textStyle]}>{props.title}</AppText>
     </View>
   </TouchableOpacity>
@@ -38,6 +38,9 @@ AppButton.defaultProps = {
   backgroundStyle: {},
   onPress: () => {},
   textStyle: {},
+  useIcon: false,
+  icon: null,
+  iconStyle: {},
 }
 
 AppButton.propTypes = {
@@ -45,9 +48,18 @@ AppButton.propTypes = {
     PropTypes.object, PropTypes.string,
     PropTypes.any
   ]),
+  icon: PropTypes.oneOfType([
+    PropTypes.object, PropTypes.string,
+    PropTypes.any
+  ]),
+  useIcon: PropTypes.bool,
   title: PropTypes.string.isRequired,
   onPress: PropTypes.func,
   textStyle: PropTypes.oneOfType([
+    PropTypes.object, PropTypes.string,
+    PropTypes.any
+  ]),
+  iconStyle: PropTypes.oneOfType([
     PropTypes.object, PropTypes.string,
     PropTypes.any
   ]),

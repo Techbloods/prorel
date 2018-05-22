@@ -4,12 +4,19 @@ import { ScrollView, View, Image, Text} from 'react-native'
 import ForRent from './ForRent';
 import map from '../../../assets/map.png';
 import { WHITE } from '../../lib/color';
+import DrawerWrapper from '../../lib/DrawerComponent';
 
 class PropertySearch extends Component {
+  static navigationOptions = {
+    header: null,
+  };
   state = { initialPage: 0 };
 
   render() {
     return (
+      <DrawerWrapper 
+        navigation={this.props.navigation}
+        title="Home" >
       <ScrollView contentContainerStyle={{
         flexGrow: 1,
         justifyContent: 'space-between',
@@ -30,6 +37,7 @@ class PropertySearch extends Component {
           </View>
         </View>
       </ScrollView>
+      </DrawerWrapper>
     );
   }
 }

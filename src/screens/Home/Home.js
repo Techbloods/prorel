@@ -12,7 +12,7 @@ import FilterContainer from '../../lib/FilterContainer';
 import Filterbox from './Filterbox';
 import EmptyContent from '../../lib/EmptyContent';
 import { NAV_PROPERTIES } from '../../navigation/navigationScreens';
-import DrawerWrapper from '../../lib/DrawerWrapper';
+import DrawerWrapper from '../../lib/DrawerComponent';
 
 const AppText = (props) => (
   <Text
